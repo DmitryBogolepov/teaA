@@ -1,65 +1,9 @@
 <section class="tea-collections container my-5">
   <h2 class="text-center fw-bold mb-5">Наши чайные коллекции</h2>
-  <div class="row g-4">
-    <div class="col-md-4">
-      <div class="card h-100 border-0 shadow-sm">
-        <img src="assets/images/tea1.png" class="card-img-top" alt="Детокс чай лайм">
-        <div class="card-body">
-          <h5 class="card-title fw-bold">Детокс чай лайм</h5>
-          <p class="card-text">Великолепный чай внесет в вашу жизнь яркие краски и дух расслабления</p>
-          <a href="#" class="btn btn-primary btn-fixed">Подробнее</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="card h-100 border-0 shadow-sm">
-        <img src="assets/images/tea2.png" class="card-img-top" alt="Ягодный чай">
-        <div class="card-body">
-          <h5 class="card-title fw-bold">Ягодный чай</h5>
-          <p class="card-text">Нотка ягод поможет вам расслабиться и наслаждаться великолепием этого чая</p>
-          <a href="#" class="btn btn-primary btn-fixed">Подробнее</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="card h-100 border-0 shadow-sm">
-        <img src="assets/images/tea3.png" class="card-img-top" alt="Цветочный чай">
-        <div class="card-body">
-          <h5 class="card-title fw-bold">Цветочный чай</h5>
-          <p class="card-text">Душистые цветы создают невероятный аромат и наполняют вас энергией</p>
-          <a href="#" class="btn btn-primary btn-fixed">Подробнее</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="card h-100 border-0 shadow-sm">
-        <img src="assets/images/tea4.png" class="card-img-top" alt="Очищающий чай">
-        <div class="card-body">
-          <h5 class="card-title fw-bold">Очищающий чай</h5>
-          <p class="card-text">Бесподобный чай для получения утреннего заряда бодрости</p>
-          <a href="#" class="btn btn-primary btn-fixed">Подробнее</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="card h-100 border-0 shadow-sm">
-        <img src="assets/images/tea5.png" class="card-img-top" alt="Кислый чай">
-        <div class="card-body">
-          <h5 class="card-title fw-bold">Кислый чай</h5>
-          <p class="card-text">Кислый чай для настоящих ценителей кислинки во время чаепития</p>
-          <a href="#" class="btn btn-primary btn-fixed">Подробнее</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="card h-100 border-0 shadow-sm">
-        <img src="assets/images/tea6.png" class="card-img-top" alt="Лимонная мята">
-        <div class="card-body">
-          <h5 class="card-title fw-bold">Лимонная мята</h5>
-          <p class="card-text">Смесь лимона с мятой сделает ваш день самым лучшим</p>
-          <a href="#" class="btn btn-primary btn-fixed">Подробнее</a>
-        </div>
-      </div>
-    </div>
+  <div class="row g-4 d-flex w-100 flex-column" >
+    <product-card *ngFor="let product of products" [product]="product"></product-card>
   </div>
 </section>
+<div *ngIf="loading" class="loader-bg">
+  <div class="loader"></div>
+</div>
