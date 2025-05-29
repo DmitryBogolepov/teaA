@@ -16,7 +16,7 @@ export class ProductService {
     return this.http.get<ProductType[]>('https://testologia.ru/tea')
   }
 
-  createOrder(data: {product:string,address:string,phone:string}) {
+  createOrder(data: {product:string,name:string,last_name:string,phone:string,country:string,zip:string,address:string}) {
     return this.http.post<{success:boolean,message?:string}>(`https://testologia.ru/order-tea`,data);
   }
 }
