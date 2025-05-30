@@ -1,7 +1,7 @@
 <section class="forms">
   <div class="container mt-5">
-    <h2 class="text-center mb-4">Сделать заказ</h2>
-    <form class="mx-auto" style="max-width: 600px;" [formGroup]="orderForm" (ngSubmit)="createOrder()">
+    <h2 class="text-center mb-4" *ngIf="successResponse">Сделать заказ</h2>
+    <form class="mx-auto" style="max-width: 600px;" [formGroup]="orderForm" (ngSubmit)="createOrder()" *ngIf="successResponse">
       <div class="row mb-3">
         <div class="mb-3">
           <label for="item" class="form-label" >Товар</label>
@@ -11,14 +11,38 @@
           <div class="col-md-12">
             <label for="firstName" class="form-label">Имя</label>
             <input type="text" class="form-control" id="firstName" placeholder="Имя" formControlName="name">
+            <div *ngIf="orderForm.get('personalInfo.name')?.touched && orderForm.get('personalInfo.name')?.invalid" class="text-danger mt-1">
+              <div *ngIf="orderForm.get('personalInfo.name')?.errors?.['required']">
+                Имя обязательно
+              </div>
+              <div *ngIf="orderForm.get('personalInfo.name')?.errors?.['pattern']">
+                Имя может содержать только буквы
+              </div>
+            </div>
           </div>
           <div class="col-md-12">
             <label for="lastName" class="form-label">Фамилия</label>
             <input type="text" class="form-control" id="lastName" placeholder="Фамилия" formControlName="last_name">
+            <div *ngIf="orderForm.get('personalInfo.last_name')?.touched && orderForm.get('personalInfo.last_name')?.invalid" class="text-danger mt-1">
+              <div *ngIf="orderForm.get('personalInfo.last_name')?.errors?.['required']">
+                Фамилия обязательна
+              </div>
+              <div *ngIf="orderForm.get('personalInfo.last_name')?.errors?.['pattern']">
+                Фамилия может содержать только буквы
+              </div>
+            </div>
           </div>
           <div class="col-md-12">
             <label for="phone" class="form-label">Телефон</label>
             <input type="tel" class="form-control" id="phone" placeholder="Телефон" formControlName="phone">
+            <div *ngIf="orderForm.get('personalInfo.phone')?.touched && orderForm.get('personalInfo.phone')?.invalid" class="text-danger mt-1">
+              <div *ngIf="orderForm.get('personalInfo.phone')?.errors?.['required']">
+                Телефон обязателен
+              </div>
+              <div *ngIf="orderForm.get('personalInfo.phone')?.errors?.['pattern']">
+                Телефон должен состоять из 11 цифр
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -27,25 +51,51 @@
           <div class="col-md-6">
             <label for="country" class="form-label">Страна</label>
             <input type="text" class="form-control" id="country" placeholder="Страна" formControlName="country">
+            <div *ngIf="orderForm.get('addressInfo.country')?.touched && orderForm.get('addressInfo.country')?.invalid" class="text-danger mt-1">
+              <div *ngIf="orderForm.get('addressInfo.country')?.errors?.['required']">
+                Страна обязательна
+              </div>
+              <div *ngIf="orderForm.get('addressInfo.country')?.errors?.['pattern']">
+                Страна может содержать только буквы
+              </div>
+            </div>
           </div>
           <div class="col-md-6">
             <label for="index" class="form-label">Индекс</label>
             <input type="text" class="form-control" id="index" placeholder="Индекс" formControlName="zip">
+            <div *ngIf="orderForm.get('addressInfo.zip')?.touched && orderForm.get('addressInfo.zip')?.invalid" class="text-danger mt-1">
+              <div *ngIf="orderForm.get('addressInfo.zip')?.errors?.['required']">
+                Zip обязателен
+              </div>
+              <div *ngIf="orderForm.get('addressInfo.zip')?.errors?.['pattern']">
+                Zip может состоять только из 5-6 цифр
+              </div>
+            </div>
           </div>
         </div>
         <div class="mb-3">
           <label for="address" class="form-label">Адрес</label>
           <input type="text" class="form-control" id="address" placeholder="Адрес" formControlName="address">
+          <div *ngIf="orderForm.get('addressInfo.address')?.touched && orderForm.get('addressInfo.address')?.invalid" class="text-danger mt-1">
+            <div *ngIf="orderForm.get('addressInfo.address')?.errors?.['required']">
+              Адрес обязателен
+            </div>
+            <div *ngIf="orderForm.get('addressInfo.address')?.errors?.['pattern']">
+             Адрес может содержать только буквы, цифры, пробелы, дефис и слеш
+            </div>
+          </div>
         </div>
       </div>
       <div class="mb-3">
         <label for="comment" class="form-label">Комментарий</label>
         <input type="text" class="form-control" id="comment" placeholder="Комментарий" formControlName="comment">
       </div>
-
       <div class="text-start">
-        <button type="submit" class="btn btn-primary order-btn">Отправить</button>
+        <button type="submit" id="orderButton" class="btn btn-primary order-btn" [disabled]="isSubmitting">Отправить</button>
+        <div class="text-danger" *ngIf="errorResponse">Произошла ошибка. Попробуйте еще раз</div>
       </div>
     </form>
+    <div class="thanks fs-2 align-content-center justify-content-center" *ngIf="!successResponse">Спасибо за заказ!</div>
+
   </div>
 </section>
