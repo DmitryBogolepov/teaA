@@ -1,7 +1,9 @@
 import {Injectable} from "@angular/core";
-import {ProductType} from "../types/product.type";
+import {ProductType} from "../../../types/product.type";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
+import {OrderType} from "../../../types/order-type.type";
+import {OrderAnswerType} from "../../../types/order-answer.type";
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +22,7 @@ export class ProductService {
     return this.http.get<ProductType>(`https://testologia.ru/tea?id=${id}`)
   }
 
-  createOrder(data: {product:string,name:string,last_name:string,phone:string,country:string,zip:string,address:string}) {
-    return this.http.post<{success:boolean,message?:string}>(`https://testologia.ru/order-tea`,data);
+  createOrder(data: OrderType) {
+    return this.http.post<OrderAnswerType>(`https://testologia.ru/order-tea`,data);
   }
 }

@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {MainComponent} from "./pages/main/main.component";
-import {OrderComponent} from "./pages/order/order.component";
-import {CatalogComponent} from "./pages/catalog/catalog.component";
-import {ProductPageComponent} from "./pages/product-page/product-page.component";
+import {MainComponent} from "./feature/main/main.component";
+import {OrderComponent} from "./feature/order/order.component";
+import {CatalogComponent} from "./feature/products/catalog/catalog.component";
+import {ProductPageComponent} from "./feature/products/product-page/product-page.component";
 
 const routes: Routes = [
   {path:'', component:MainComponent},

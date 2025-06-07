@@ -1,0 +1,53 @@
+<section class="main-banner">
+  <div class="container align-content-center">
+    <img src="../../../assets/images/tea-main.png" alt="" class="banner-img">
+  </div>
+</section>
+
+<section class="questions container">
+  <h2 class="mb-4 text-center">Ответы на часто задаваемые вопросы</h2>
+  <ngb-accordion #acc="ngbAccordion" activeIds="faq1">
+    <ngb-panel id="faq1" title="Собираете ли вы подарочные боксы?">
+      <ng-template ngbPanelContent>
+        Чтобы сделать заказ, выберите товар и нажмите кнопку «Купить».
+      </ng-template>
+    </ngb-panel>
+
+    <ngb-panel id="faq2" title="Сколько у вас разновидностей чая?">
+      <ng-template ngbPanelContent>
+        Доступны карты Visa, MasterCard и оплата при получении.
+      </ng-template>
+    </ngb-panel>
+
+    <ngb-panel id="faq3" title="В какой срок осуществляется доставка?">
+      <ng-template ngbPanelContent>
+        Вы можете вернуть товар в течение 14 дней с момента получения.
+      </ng-template>
+    </ngb-panel>
+
+    <ngb-panel id="faq4" title="У вас обновляется ассортимент?">
+      <ng-template ngbPanelContent>
+        У нас регулярно появляется новый чайный ассортимент.
+      </ng-template>
+    </ngb-panel>
+
+    <ngb-panel id="faq5" title="Какого объема у вас пачки чая?">
+      <ng-template ngbPanelContent>
+        Объем варьируется от 50 до 250 г в зависимости от вида чая.
+      </ng-template>
+    </ngb-panel>
+  </ngb-accordion>
+</section>
+
+<ng-template #promoModal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Посмотрите наши чайные коллекции</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body text-center">
+    <p>Загляните в каталог и выберите чай по вкусу!</p>
+  </div>
+  <div class="modal-footer justify-content-center">
+    <a routerLink="/catalog" class="btn btn-success px-4" (click)="modal.close()">Смотреть</a>
+  </div>
+</ng-template>
