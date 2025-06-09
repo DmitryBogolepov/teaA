@@ -3,6 +3,9 @@ body {
   height: 100%;
 }
 
+.app-footer {
+  margin-top: 60px;
+}
 
 .accordion {
   box-sizing: border-box;
@@ -11,13 +14,6 @@ body {
   align-content: center;
   justify-content: center;
 }
-
-.content {
-
-  padding-bottom: 60px;
-}
-
-
 
 .accordion-item {
   border: none;
