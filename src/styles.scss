@@ -1,9 +1,19 @@
+html,
+body {
+  height: 100%;
+}
+
+
 .accordion {
   box-sizing: border-box;
   display: flex !important;
   flex-wrap: wrap;
   align-content: center;
   justify-content: center;
+}
+
+.content {
+  padding-bottom: 60px;
 }
 
 .accordion-item {
